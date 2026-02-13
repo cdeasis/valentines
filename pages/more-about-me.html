@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day ❤️</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page">
+
+        <header>
+            <h1>More About Me</h1>
+            <nav class="tabs">
+                <a href="../index.html">Home</a>
+                <a href="things-i-love.html">Things I Love About You</a>
+                <a href="more-about-me.html" class="active">More About Me</a>
+                <a href="songs.html">Songs</a>
+                <a href="message.html">Message</a>
+            </nav>
+        </header>
+
+        <main>
+            <p class="intro">
+                Here are a few pictures I like, and some fun little things about me 😊
+            </p>
+
+            <div class="slideshow" aria-label="Photo Slideshow">
+                <button class="arrow" id="prev" type="button" aria-label="Previous Photo">‹</button>
+
+                <div class="slide-frame">
+                    <img id="slide" src="../images/me1.jpg" alt="Photo of me" loading="lazy"/>
+                </div>
+
+                <button class="arrow" id="next" type="button" aria-label="Next Photo">›</button>
+            </div>
+
+            <p class="caption" id="caption"></p>
+
+            <h2>Fun Facts</h2>
+            <ul class="fun-facts">
+
+                <li>My birthday is on June 5. I'm also an only child. Growing up, I always wanted a sibling but as I've grown older, I've come to appreciate being an only child.</li>
+
+                <li>I play the piano. I started when I was super young, but recently I haven't played as much. I come from a family of musicians, my dad sings really well, and my mom was my first piano teacher. I have always wanted to learn how to play the guitar, though.</li>
+
+                <li>I love sports. I grew up a swimmer, played basketball in high school, and later volleyball in college. I'm a die hard New York sports fan and used to always watch games, but as life has gotten busier in the past few years, I've watched less, but I do still keep up with them. Baseball is my favorite sport, and the Yankees are my favorite team. Barry Bonds was my favorite player growing up, hence my name on Discord haha. My favorite team outside of New York sports is FC Barcelona.</li>
+
+                <li>When I was younger, my family used to travel a lot, at least once a year. Nowadays, I don't get much of an opportunity to travel anymore, but I'm making more of an effort to travel and explore the world. I want to go back to Spain, as even though I am Filipino, a pretty significant portion of my family does come from Spain, Valencia specifically, so at some point I do want to go and visit.</li>
+
+                <li>Most of the pictures I showed are me going out with my friends and having fun, but I actually prefer nights that are quieter and where I stay in. I like being at home, relaxing, or playing games. I've always loved video games, and my favorite genre are factory simulator or city building games, like <em>Satisfactory</em> or <em>Dyson Sphere Program</em>. The game I have the most hours in though, is <em>League of Legends.</em></li>
+
+                <li>I love driving. I always find a way to make an excuse to go and drive, even though the traffic here in New York is awful haha. Long road tripes are my favorite, and I always offer to drive. Something about it is so calming to me, whether if I'm with friends or if I'm alone. And of course, it's the perfect opportunity to listen to the music that I love.</li>
+
+                <li>I'm a terrible artist, I can't draw nor can I do arts and crafts well at all. Despite this, though, I love museums, especially art museums. I love to just walk around at my own slow pace and observe and appreciate different works, whether it be paintings, sculptures, textiles. To me, it's really calming and for a little bit, I get to be in my own world.</li>
+
+                <li>I really value meaningful connections and getting to know people at a deeper level. I'm also pretty reflective and sentimental. I like to think a lot, and notice small things, and I care deeply about the people in my life.</li>
+
+            </ul>
+
+            <script>
+                const photos = [
+                    { src: "../images/me1.jpg", caption: "A photo of me when I was a baby", pos: "50% 40%"},
+                    { src: "../images/me2.jpg", caption: "Me and my roommates during my senior year of college"},
+                    { src: "../images/me3.jpg", caption: "Me and my college friends went to the beach a fair amount, and this is one of my favorite pictures of us on the way there", pos:"50% 10%"},
+                    { src: "../images/me4.jpg", caption: "This is me and one of my Korean roommates, Wesley. As you can see, I get bad Asian glow when I drink, my face is super red hahaha"},
+                    { src: "../images/me5.jpg", caption: "My friends and I went to support our roommates event for Hawaii club. The food there was delicious.", pos: "20% 50%"},
+                    { src: "../images/me6.jpg", caption: "Most of my college friends are a year younger than me. I visited them a year after I graduated for their graduation, and we got one last photo together. The guy with his arm around me is my other Korean roommate, Logan, who was probably my best friend my senior year."},
+                    { src: "../images/me7.jpg", caption: "This is a photo Logan took of me during my graduation.", pos: "50% 60%"},
+                    { src: "../images/me8.jpg", caption: "Two years ago, I was a T-Rex for Halloween! This is me in my onesie."},
+                    { src: "../images/me9.jpg", caption: "A photo of me and some of my friends from home during a Christmas party."},
+                    { src: "../images/me10.jpg", caption: "This is me and my best friends. The guy to the left of me with sunglasses is Stefan, my best friend. The girl in the front with the brown shirt and white shorts is Janielle, to her right is Annie, and the girl crouched is Joanna. These are my cloest friends. The other two guys to the right of me are Ethan (left) and Rafi (right), and the other girl all the way to the left is Andrea. We've all known each other since middle school, so over 13 years now!"},
+                    { src: "../images/me11.jpg", caption: "Me and Stefan laughing during Secret Santa last year, with Annie taking a picture of us."},
+                    { src: "../images/me12.jpg", caption: "Me a few years ago during Oktoberfest (I did not drink all of these beers by the way, my friends made me hold them for the picture hahaha)"},
+                ];
+
+                let i = 0;
+                const img = document.getElementById("slide");
+                const cap = document.getElementById("caption");
+
+                function render() {
+                    img.src = photos[i].src;
+                    cap.textContent = photos[i].caption || "";
+                    img.style.objectPosition = photos[i].pos || "center";
+                }
+
+                document.getElementById("prev").addEventListener("click", () => {
+                    i = (i - 1 + photos.length) % photos.length;
+                    render();
+                });
+
+                document.getElementById("next").addEventListener("click", () => {
+                    i = (i + 1) % photos.length;
+                    render();
+                });
+
+                render();
+            </script>
+        </main>
+    </div>
+</body>
+</html>
